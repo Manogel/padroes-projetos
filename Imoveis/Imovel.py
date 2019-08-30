@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from Interfaces.GetCep import GetCep
-
+from abc import ABCMeta
 class Imovel(object):
+  __metaclass__ = ABCMeta
   def __init__(self, proprietario, tipo, valor, descricao, cep, num_casa, area_const, area_terr):
     self.proprietario = proprietario
     self.tipo = tipo
@@ -30,7 +31,7 @@ class Imovel(object):
   def getValor(self):
     return self.valor
 
-  def getCep(self):
+  def getCEP(self):
     return self.cep
   
   def getEndereco(self):

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+from abc import ABCMeta
 class Pessoa(object):
+  __metaclass__ = ABCMeta
   def __init__(self, nome, data_nasc, cpf, nacionalidade, cep, num_casa):
     self.nome = nome
     self.data_nasc = data_nasc

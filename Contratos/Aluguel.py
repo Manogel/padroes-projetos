@@ -1,4 +1,42 @@
-from Contratos.Contrato import Contrato
+# -*- coding: utf-8 -*-
+from Contratos.FactoryContract import FactoryContract
+from Imoveis.Residencia import Residencia 
+from Imoveis.Galpao import Galpao
+from Pessoas.Locador import Locador
+from Pessoas.Locatario import Locatario
+from Interfaces.TermoContrato import TermoContrato
+
+class Aluguel(FactoryContract, TermoContrato):
+  def montaLocador(self, nome, data_nasc, cpf, nacionalidade, cep, num_casa, telefone, email, comprovante_renda = None):
+    return Locador(nome, data_nasc, cpf, nacionalidade, cep, num_casa, telefone, email, comprovante_renda)
+  
+  def montaLocatario(self, nome, data_nasc, cpf, nacionalidade, cep, num_casa, telefone, email, cnpj = None):
+    return Locatario(nome, data_nasc, cpf, nacionalidade, cep, num_casa, telefone, email, cnpj)
+
+  def montaImovel(self, proprietario, tipo, valor, descricao, cep, num_casa,  area_const, area_terr, n_suites, n_quartos, n_banheiros, n_garagem):
+    return Residencia(proprietario, tipo, valor, descricao, cep, num_casa,  area_const, area_terr, n_suites, n_quartos, n_banheiros, n_garagem)
+
+  def montaTermo(self, Imovel, Locador, Locatario):
+    termo = f"""
+LOCADOR: {Locador.getNome()}, portador da cédula de CPF nº {Locador.getCPF()}.
+
+LOCATÁRIO: {Locatario.getNome()}, portador da cédula de CPF nº {Locatario.getCPF()}.
+
+CLÁUSULA: O objeto deste contrato de locação é o imóvel residencial, 
+situado à {Imovel.getEndereco()}, {Imovel.getNumero()}, {Imovel.getBairro()}, {Imovel.getCEP()}, {Imovel.getCidade()} - {Imovel.getEstado()}."""
+    return termo
+
+
+
+
+
+
+
+
+
+
+
+""" from Contratos.Contrato import Contrato
 
 class Aluguel(Contrato):
   def __init__(self, imovel, locador, locatario, inicio, fim, obs, valor, temp = 5):
@@ -9,7 +47,7 @@ class Aluguel(Contrato):
     pass
   
   def imprimirContrato(self):
-    self.termo = f"""
+    self.termo = f""
 LOCADOR: {self.Locador.getNome()}, portador da cédula de CPF nº {self.Locador.getCPF()}.
 
 LOCATÁRIO: {self.Locatario.getNome()}, portador da cédula de CPF nº {self.Locatario.getCPF()}.
@@ -51,7 +89,7 @@ CLÁUSULA DÉCIMA QUINTA: A infração de qualquer das cláusulas do presente co
 CLÁUSULA DÉCIMA SEXTA: As partes contratantes obrigam-se por si, herdeiros e/ou sucessores, elegendo o Foro da Cidade do (colocar o fórum do município), para a propositura de qualquer ação.
 
 E, por assim estarem justos e contratados, mandaram extrair o presente instrumento em três (03) vias, para um só efeito, assinando-as, juntamente com as testemunhas, a tudo presentes.
-    """
+    "
 
     print(f'{self.termo[0:900]} [...]')
-    pass
+    pass """
