@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-class GetCep(object):
+from abc import ABC, abstractmethod
+
+class GetCep(ABC):
+  @abstractmethod
   def getCep(self):
     pass
   pass
