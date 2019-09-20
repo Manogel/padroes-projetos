@@ -1,48 +1,48 @@
 # -*- coding: utf-8 -*-
 from Contratos.Contrato import Contrato
-from Imoveis.Residencia import Residencia 
+from Imoveis.Residencia import Residencia
 from Imoveis.Galpao import Galpao
 from Pessoas.Locador import Locador
 from Pessoas.Locatario import Locatario
 from Contratos.Contrato import Contrato
-import copy 
+import copy
+from Interfaces.Command import Command
 
-class Aluguel(Contrato):
-  def __init__(self, imovel, locador, locatario):
-    Contrato.__init__(self, "Aluguel")
-    self.Imovel = imovel
-    self.Locador = locador
-    self.Locatario = locatario
-    self.valor_parcela = None
-    self.periodo = None 
-    pass
 
-  def setValorParcela(self, valor):
-    self.valor_parcela = valor
-    pass
-  
-  def getValorParcela(self):
-    return self.valor_parcela
-  
-  def imprimirContrato(self):
-    termo = f"""
+class Aluguel(Contrato, Command):
+    def __init__(self, imovel, locador, locatario):
+        Contrato.__init__(self, "Aluguel")
+        self.Imovel = imovel
+        self.Locador = locador
+        self.Locatario = locatario
+        self.valor_parcela = None
+        self.periodo = None
+        pass
+
+    def setValorParcela(self, valor):
+        self.valor_parcela = valor
+        pass
+
+    def getValorParcela(self):
+        return self.valor_parcela
+
+    def imprimirContrato(self):
+        termo = f"""
 LOCADOR: {self.Locador.getNome()}, portador da cédula de CPF nº {self.Locador.getCPF()}.
 
 LOCATÁRIO: {self.Locatario.getNome()}, portador da cédula de CPF nº {self.Locatario.getCPF()}.
 
-CLÁUSULA: O objeto deste contrato de locação é o imóvel residencial, 
+CLÁUSULA: O objeto deste contrato de locação é o imóvel residencial,
 situado à {self.Imovel.getEndereco()}, {self.Imovel.getNumero()}, {self.Imovel.getBairro()}, {self.Imovel.getCEP()}, {self.Imovel.getCidade()} - {self.Imovel.getEstado()}."""
-    print(termo)
-    return termo
+        print(termo)
+        return termo
 
-  def clonar(self):
-    return copy.copy(self)
+    def clonar(self):
+        return copy.copy(self)
 
-
-
-
-
-
+    def imprimirImovelContrato(self):
+        self.Imovel.getInformation()
+        pass
 
 
 """ from Contratos.Contrato import Contrato

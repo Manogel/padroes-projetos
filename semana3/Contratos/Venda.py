@@ -1,8 +1,9 @@
 from Contratos.Contrato import Contrato
-import copy 
+import copy
+from Interfaces.Command import Command
 
 
-class Venda(Contrato):
+class Venda(Contrato, Command):
     def __init__(self, imovel, locador, locatario):
         Contrato.__init__(self, "Venda")
         self.Imovel = imovel
@@ -11,6 +12,10 @@ class Venda(Contrato):
         self.valor = 0
         self.num_parcelas = 1
         self.valor_entrada = None
+        pass
+
+    def imprimirImovelContrato(self):
+        self.Imovel.getInformation()
         pass
 
     def imprimirContrato(self):

@@ -19,10 +19,9 @@ class Contrato(ABC):
         self.data_fim = fim
         self.observacoes = obs
         pass
-    
+
     def getTipo(self):
         return self.tipo
-        
 
     def imprimirContrato(self):
         pass
