@@ -22,9 +22,9 @@ class Galpao(Imovel, GetCep):
   def getInformation(self):
     text = f"""
     DADOS DO LOCADOR:
-      Nome: 
-      CPF:
-      Contato: 
+      Nome: {self.proprietario.getNome()}
+      CPF: {self.proprietario.getCPF()}
+      Contato: {self.proprietario.getContato()} 
     
     SOBRE O IMOVEL:
       Tipo: {self.tipo }

@@ -3,7 +3,8 @@ from abc import ABC, abstractmethod
 
 
 class Contrato(ABC):
-    def __init__(self):
+    def __init__(self, tipo):
+        self.tipo = tipo
         self.Imovel = None
         self.Locador = None
         self.Locatario = None
@@ -13,12 +14,15 @@ class Contrato(ABC):
         self.termo_contrato = None
         pass
 
-    def setInfo(self, tipo, inicio, fim, obs):
-        self.tipo = tipo
+    def setInfo(self, inicio, fim, obs):
         self.data_inicio = inicio
         self.data_fim = fim
         self.observacoes = obs
         pass
+    
+    def getTipo(self):
+        return self.tipo
+        
 
     def imprimirContrato(self):
         pass

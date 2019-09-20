@@ -1,10 +1,14 @@
 from Contratos.Contrato import Contrato
+import copy 
 
 
 class Venda(Contrato):
-    def __init__(self, vendaPrototype):
-        Contrato.__init__(self)
-        self.valor = vendaPrototype.getValor()
+    def __init__(self, imovel, locador, locatario):
+        Contrato.__init__(self, "Venda")
+        self.Imovel = imovel
+        self.Locador = locador
+        self.Locatario = locatario
+        self.valor = 0
         self.num_parcelas = 1
         self.valor_entrada = None
         pass
@@ -21,19 +25,22 @@ situado à {self.Imovel.getEndereco()}, {self.Imovel.getNumero()} no CEP {self.I
         self.num_parcelas = nParcelas
         pass
 
-    def getParcelas(self, nParcelas):
+    def getParcelas(self):
         return self.num_parcelas
 
     def setValor(self, valor):
         self.valor = valor
         pass
 
-    def getValor(self, valor):
+    def getValor(self):
         return self.valor
 
     def setValorEntrada(self, valor):
         self.valor = valor
         pass
 
-    def getValorEntrada(self, valor):
+    def getValorEntrada(self):
         return self.valor
+
+    def clonar(self):
+        return copy.copy(self)

@@ -5,13 +5,24 @@ from Imoveis.Galpao import Galpao
 from Pessoas.Locador import Locador
 from Pessoas.Locatario import Locatario
 from Contratos.Contrato import Contrato
+import copy 
 
 class Aluguel(Contrato):
-  def __init__(self, inicio, fim, obs = "Sem descricao"):
-    Contrato.__init__(self, "Aluguel", inicio, fim, obs)
+  def __init__(self, imovel, locador, locatario):
+    Contrato.__init__(self, "Aluguel")
+    self.Imovel = imovel
+    self.Locador = locador
+    self.Locatario = locatario
     self.valor_parcela = None
     self.periodo = None 
     pass
+
+  def setValorParcela(self, valor):
+    self.valor_parcela = valor
+    pass
+  
+  def getValorParcela(self):
+    return self.valor_parcela
   
   def imprimirContrato(self):
     termo = f"""
@@ -24,8 +35,8 @@ situado à {self.Imovel.getEndereco()}, {self.Imovel.getNumero()}, {self.Imovel.
     print(termo)
     return termo
 
-
-
+  def clonar(self):
+    return copy.copy(self)
 
 
 
