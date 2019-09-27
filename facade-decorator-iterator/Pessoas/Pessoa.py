@@ -1,29 +1,37 @@
 # -*- coding: utf-8 -*-
 from abc import ABCMeta
+
+
 class Pessoa(object):
-  __metaclass__ = ABCMeta
-  def __init__(self, nome, data_nasc, cpf, nacionalidade, cep, num_casa):
-    self.nome = nome
-    self.data_nasc = data_nasc
-    self.cpf = cpf
-    self.nacionalidade = nacionalidade
-    self.cep = cep
-    self.num_casa = num_casa
-    self.bairro = None
-    self.endereco = None
-    self.estado = None
-    self.cidade = None
-  pass
+    __metaclass__ = ABCMeta
 
-  def dadosPessoa(self):
+    def __init__(self):
+        self.nome = None
+        self.data_nasc = None
+        self.cpf = None
+        self.nacionalidade = None
+        self.cep = None
+        self.num_casa = None
+        self.bairro = None
+        self.endereco = None
+        self.estado = None
+        self.cidade = None
     pass
 
-  def getNome(self):
-    return self.nome
-  
-  def getCPF(self):
-    return self.cpf
+    def setDataLocalization(self):
+        pass
 
-  def getContato(self):
-    pass
-  
+    def setUserInformation(self):
+        pass
+
+    def dadosPessoa(self):
+        pass
+
+    def getNome(self):
+        return self.nome
+
+    def getCPF(self):
+        return self.cpf
+
+    def getContato(self):
+        pass

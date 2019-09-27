@@ -10,11 +10,11 @@ from Interfaces.Command import Command
 
 
 class Aluguel(Contrato, Command):
-    def __init__(self, imovel, locador, locatario):
+    def __init__(self, imovel, locador):
         Contrato.__init__(self, "Aluguel")
         self.Imovel = imovel
         self.Locador = locador
-        self.Locatario = locatario
+        self.Locatario = imovel.getPropritetario()
         self.valor_parcela = None
         self.periodo = None
         pass

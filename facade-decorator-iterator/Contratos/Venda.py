@@ -4,11 +4,11 @@ from Interfaces.Command import Command
 
 
 class Venda(Contrato, Command):
-    def __init__(self, imovel, locador, locatario):
+    def __init__(self, imovel, locador):
         Contrato.__init__(self, "Venda")
         self.Imovel = imovel
         self.Locador = locador
-        self.Locatario = locatario
+        self.Locatario = imovel.getPropritetario()
         self.valor = 0
         self.num_parcelas = 1
         self.valor_entrada = None
