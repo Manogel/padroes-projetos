@@ -30,7 +30,7 @@ class Cart(object):
         return total - self.__desconto_extra
 
     def obter_itens(self):
-        return tuple(self.__itens)
+        return self.__itens
 
     @property
     def total_itens(self):
